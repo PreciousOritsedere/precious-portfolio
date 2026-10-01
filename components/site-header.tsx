@@ -1,51 +1,52 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks, site } from "@/lib/site";
 
 export function SiteHeader() {
+  const pathname = usePathname();
+
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-bg/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 flex justify-center px-3 pt-3">
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-bg-elevated focus:px-3 focus:py-2 focus:text-fg"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-3 focus:top-3 focus:rounded-md focus:bg-fg focus:px-3 focus:py-2 focus:text-bg"
       >
         Skip to content
       </a>
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
+      <nav
+        aria-label="Primary"
+        className="flex items-center gap-0.5 rounded-full border border-border bg-bg/85 p-1 shadow-[0_10px_30px_-14px_rgb(42_31_28/0.35)] backdrop-blur-md"
+      >
         <Link
           href="/"
-          className="font-display text-sm font-bold tracking-tight text-fg transition-colors hover:text-brand"
+          aria-label={`${site.name} — home`}
+          aria-current={pathname === "/" ? "page" : undefined}
+          className="grid size-8 place-items-center rounded-full bg-brand font-display text-[11px] font-extrabold tracking-tight text-cta-fg"
         >
-          {site.name.split(" ")[0]}
-          <span className="text-brand">.</span>
+          PO
         </Link>
-        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
+        {navLinks.map((link) => {
+          const current = pathname === link.href || pathname.startsWith(`${link.href}/`);
+          return (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm text-fg-muted transition-colors hover:text-brand"
+              aria-current={current ? "page" : undefined}
+              className="rounded-full px-2.5 py-1.5 text-[13px] text-fg-muted transition-colors duration-150 hover:text-fg aria-[current=page]:bg-bg-elevated aria-[current=page]:text-fg sm:px-3 sm:text-sm"
             >
               {link.label}
             </Link>
-          ))}
-        </nav>
-        <details className="relative md:hidden">
-          <summary className="cursor-pointer list-none rounded-md border border-border px-3 py-2 text-sm text-fg">
-            Menu
-          </summary>
-          <div className="absolute right-0 mt-2 min-w-44 rounded-lg border border-border bg-bg-elevated p-2 shadow-lg">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block rounded-md px-3 py-2 text-sm text-fg hover:bg-paper"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </details>
-      </div>
+          );
+        })}
+        <a
+          href={`mailto:${site.email}`}
+          className="ml-1 hidden rounded-full bg-fg px-3.5 py-1.5 text-sm font-medium text-bg transition-colors duration-150 hover:bg-brand sm:inline-flex"
+        >
+          Say hello
+        </a>
+      </nav>
     </header>
   );
 }

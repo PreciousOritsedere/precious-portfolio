@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { volunteerOrgs } from "@/lib/site";
+import { volunteerOrgs } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Volunteer",
@@ -7,19 +7,25 @@ export const metadata: Metadata = {
 
 export default function VolunteerPage() {
   return (
-    <main id="main" className="mx-auto max-w-3xl flex-1 px-5 py-16 sm:px-8">
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+    <main id="main" className="mx-auto w-full max-w-[64rem] flex-1 px-5 pt-16 sm:px-8">
+      <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">
         Volunteer
       </h1>
-      <p className="mt-3 text-fg-muted">
-        Community and mentoring work — separate from paid client systems.
+      <p className="mt-3 max-w-[56ch] text-lg leading-relaxed text-fg-muted">
+        I volunteer as an engineer and mentor when I have the time. These are the communities
+        I&apos;ve worked with.
       </p>
-      <ul className="mt-12 space-y-10">
+      <ul className="mt-12 border-t border-border">
         {volunteerOrgs.map((entry) => (
-          <li key={entry.org}>
-            <h2 className="font-display text-xl font-bold">{entry.org}</h2>
+          <li key={entry.org} className="border-b border-border py-6">
+            <h2 className="font-display text-xl font-bold tracking-tight">{entry.org}</h2>
             <p className="mt-1 text-sm font-medium text-brand">{entry.role}</p>
-            <p className="mt-2 text-fg-muted">{entry.summary}</p>
+            <p className="mt-2 max-w-[60ch] leading-relaxed text-fg-muted">{entry.summary}</p>
+            {entry.href && (
+              <a href={entry.href} className="mt-3 inline-block text-sm text-fg-muted hover:text-fg">
+                {new URL(entry.href).hostname.replace("www.", "")} ↗
+              </a>
+            )}
           </li>
         ))}
       </ul>

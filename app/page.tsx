@@ -1,253 +1,234 @@
+import Image from "next/image";
 import Link from "next/link";
-import { GithubActivity } from "@/components/github-activity";
-import { FadeUp, HeroMotion, Reveal } from "@/components/motion";
-import {
-  capabilities,
-  featuredProjects,
-  site,
-  volunteerOrgs,
-  writingPosts,
-} from "@/lib/site";
+import { CodeBanner } from "@/components/code-banner";
+import { ExperienceList } from "@/components/experience-list";
+import { GitHubActivity } from "@/components/github-activity";
+import { FadeUp, HeroMotion } from "@/components/motion";
+import { ProjectCard } from "@/components/project-card";
+import { SectionHeading } from "@/components/section-heading";
+import { StackGroups } from "@/components/stack-groups";
+import { TechChip } from "@/components/tech-chip";
+import { featuredProjects, volunteerOrgs, writingPosts } from "@/lib/content";
+import { site, socialLinks } from "@/lib/site";
 
 export default function HomePage() {
   return (
-    <main id="main">
-      <section className="hero-atmosphere hero-grain relative overflow-hidden text-cta-fg">
-        <div className="relative mx-auto flex min-h-[calc(100svh-3.5rem)] max-w-6xl flex-col justify-center px-5 py-20 sm:px-8">
-          <HeroMotion>
+    <main id="main" className="mx-auto w-full max-w-[64rem] flex-1 px-5 sm:px-8">
+      <section aria-labelledby="intro" className="pt-6">
+        <CodeBanner />
+
+        <HeroMotion>
+          <div className="relative z-10 -mt-10 flex items-end justify-between gap-4 px-1 sm:-mt-12 sm:px-5">
             <FadeUp>
-              <p className="font-display text-[clamp(2.75rem,8vw,5.5rem)] font-extrabold leading-[0.95] tracking-[-0.03em]">
-                {site.name}
+              <div
+                aria-hidden
+                className="grid size-20 place-items-center rounded-full bg-paper font-display text-2xl font-extrabold tracking-tight text-brand ring-[5px] ring-bg sm:size-24 sm:text-3xl"
+              >
+                PO
+              </div>
+            </FadeUp>
+            <FadeUp className="hidden sm:block">
+              <ul className="flex flex-wrap justify-end gap-x-4 gap-y-1 pb-1 font-mono text-xs text-fg-muted">
+                {socialLinks.map((s) => (
+                  <li key={s.label}>
+                    <a href={s.href} className="hover:text-brand">
+                      {s.label} ↗
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </FadeUp>
+          </div>
+
+          <FadeUp>
+            <h1
+              id="intro"
+              className="mt-6 font-display text-[clamp(2.25rem,6vw,3.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
+            >
+              {site.name}
+            </h1>
+            <p className="mt-2 text-lg text-fg-muted">
+              {site.role} · JavaScript, TypeScript, React, Python, Node.js · {site.location.split(",")[0]}
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-fg-muted sm:hidden">
+              {socialLinks.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} className="hover:text-brand">
+                    {s.label} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </FadeUp>
+
+          <FadeUp>
+            <div className="mt-8 max-w-[62ch] space-y-4 text-[17px] leading-[1.75]">
+              <p>
+                I&apos;m a software engineer in London. I mostly build with{" "}
+                <TechChip inline name="JavaScript" />, <TechChip inline name="TypeScript" />, <TechChip inline name="React" />,
+                <TechChip inline name="Next.js" />,  <TechChip inline name="Vue" /> and{" "} <TechChip inline name="Node.js" />. I also use{" "}
+                <span className="whitespace-nowrap">
+                  <TechChip inline name="Python" />
+                </span>{" "}
+                for data work and automation. I like understanding the whole product, not just the
+                UI. And I am always exploring new tools and tech stacks.
               </p>
-            </FadeUp>
-            <FadeUp className="mt-6 max-w-xl">
-              <h1 className="text-lg font-medium text-cta-fg/90 sm:text-xl">
-                {site.role}
-              </h1>
-            </FadeUp>
-            <FadeUp className="mt-4 max-w-md">
-              <p className="text-base leading-relaxed text-cta-fg/75">
-                {site.tagline}
+              <p>
+                I currently work at the Open Data Institute, where most of my time goes into the{" "}
+                <strong className="font-medium">OpenActive dashboard</strong> and{" "}
+                <strong className="font-medium">Solid File Manager</strong>. Before ODI, I worked
+                on products in education, fintech, healthcare and the creator economy.
               </p>
-            </FadeUp>
-            <FadeUp className="mt-10 flex flex-wrap gap-3">
+              <p className="text-fg-muted">
+                Since 2019, I&apos;ve built my career across Nigerian, UK and distributed
+                international teams. Accessibility is part of how I build, not something I leave
+                until the end. I&apos;ve also led a small frontend team, contributed through
+                Outreachy, and mentored other frontend developers.
+              </p>
+            </div>
+          </FadeUp>
+
+          <FadeUp>
+            <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={`mailto:${site.email}`}
-                className="inline-flex items-center justify-center rounded-lg bg-cta-fg px-5 py-3 text-sm font-medium text-brand transition-opacity hover:opacity-90"
+                className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
               >
                 Email me
               </a>
-              <Link
-                href="/work"
-                className="inline-flex items-center justify-center rounded-lg border border-[color:var(--cta-secondary-border)] px-5 py-3 text-sm font-medium text-cta-fg transition-colors hover:bg-white/10"
-              >
-                View work
-              </Link>
-            </FadeUp>
-          </HeroMotion>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <Reveal>
-          <h2 className="font-display text-2xl font-bold tracking-tight text-fg sm:text-3xl">
-            Featured systems
-          </h2>
-          <p className="mt-2 max-w-xl text-fg-muted">
-            Product UIs, open-data platforms, and the layers underneath.
-          </p>
-        </Reveal>
-        <ul className="mt-10 divide-y divide-border">
-          {featuredProjects.map((project) => (
-            <li key={project.slug}>
-              <Reveal>
-                <Link
-                  href={`/work/${project.slug}`}
-                  className="group flex flex-col gap-1 py-6 transition-colors sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
-                >
-                  <div>
-                    <p className="font-display text-xl font-bold text-fg group-hover:text-brand">
-                      {project.title}
-                    </p>
-                    <p className="mt-1 max-w-xl text-sm text-fg-muted">
-                      {project.line}
-                    </p>
-                  </div>
-                  <span className="shrink-0 font-mono text-xs text-stone">
-                    {project.year}
-                  </span>
-                </Link>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-        <Reveal className="mt-4">
-          <Link
-            href="/work"
-            className="text-sm font-medium text-brand hover:text-brand-soft"
-          >
-            All work →
-          </Link>
-        </Reveal>
-      </section>
-
-      <section className="bg-bg-elevated">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <Reveal>
-            <h2 className="font-display text-2xl font-bold tracking-tight">
-              Capabilities
-            </h2>
-            <p className="mt-2 text-fg-muted">
-              How I show up on a team — not a logo wall.
-            </p>
-          </Reveal>
-          <ul className="mt-8 flex flex-wrap gap-3">
-            {capabilities.map((cap) => (
-              <li
-                key={cap}
-                className="rounded-md border border-border bg-bg px-4 py-2 font-mono text-sm text-fg"
-              >
-                {cap}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <Reveal>
-          <h2 className="font-display text-2xl font-bold tracking-tight">
-            Proof I ship
-          </h2>
-          <p className="mt-2 text-fg-muted">
-            GitHub contributions — the quiet pulse of the work.
-          </p>
-        </Reveal>
-        <Reveal className="mt-8">
-          <GithubActivity />
-        </Reveal>
-      </section>
-
-      {site.spotifyUrl ? (
-        <section className="bg-bg-elevated">
-          <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-            <Reveal>
-              <h2 className="font-display text-2xl font-bold tracking-tight">
-                Off the clock
-              </h2>
-              <p className="mt-2 max-w-md text-fg-muted">
-                Something loud on Spotify when the code compiles.
-              </p>
               <a
-                href={site.spotifyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex text-sm font-medium text-brand hover:text-brand-soft"
+                href={site.calendarUrl}
+                className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
               >
-                Listen on Spotify →
+                Book a call
               </a>
-            </Reveal>
-          </div>
-        </section>
-      ) : null}
-
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <Reveal>
-          <h2 className="font-display text-2xl font-bold tracking-tight">
-            Volunteer
-          </h2>
-          <p className="mt-2 text-fg-muted">
-            Mentoring and community engineering outside paid work.
-          </p>
-        </Reveal>
-        <ul className="mt-8 space-y-4">
-          {volunteerOrgs.map((entry) => (
-            <li key={entry.org}>
-              <Reveal>
-                <p className="font-medium text-fg">{entry.org}</p>
-                <p className="text-sm text-fg-muted">
-                  {entry.role} — {entry.summary}
-                </p>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-        <Reveal className="mt-6">
-          <Link
-            href="/volunteer"
-            className="text-sm font-medium text-brand hover:text-brand-soft"
-          >
-            Volunteer work →
-          </Link>
-        </Reveal>
+            </div>
+          </FadeUp>
+        </HeroMotion>
       </section>
 
-      <section className="bg-bg-elevated">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-          <Reveal>
-            <h2 className="font-display text-2xl font-bold tracking-tight">
-              Writing
-            </h2>
-            <p className="mt-2 text-fg-muted">
-              Occasional notes on craft, tools, and the non-tech side.
-            </p>
-          </Reveal>
-          <ul className="mt-8 space-y-4">
-            {writingPosts.slice(0, 3).map((post) => (
-              <li key={post.title}>
-                <Reveal>
-                  <a
-                    href={post.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group"
-                  >
-                    <p className="font-medium text-fg group-hover:text-brand">
-                      {post.title}
-                    </p>
-                    <p className="font-mono text-xs text-stone">{post.source}</p>
-                  </a>
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-          <Reveal className="mt-6">
-            <Link
-              href="/writing"
-              className="text-sm font-medium text-brand hover:text-brand-soft"
-            >
-              All writing →
-            </Link>
-          </Reveal>
+      <section aria-labelledby="work" className="mt-28">
+        <SectionHeading
+          id="work"
+          title="A few things I’ve worked on"
+          intro="The public repositories are linked. Client code stays private."
+          link={{ href: "/work", label: "All work" }}
+        />
+        <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2">
+          {featuredProjects.map((project, i) => (
+            <div key={project.slug} className={i === 0 ? "sm:col-span-2" : undefined}>
+              <ProjectCard project={project} large={i === 0} priority={i === 0} />
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
-        <Reveal>
-          <h2 className="font-display text-2xl font-bold tracking-tight">
-            Let&apos;s talk
+      <section aria-labelledby="stack" className="mt-28">
+        <SectionHeading
+          id="stack"
+          title="Tools I use"
+          intro="The languages, frameworks and services that show up most often in my work."
+        />
+        <StackGroups />
+      </section>
+
+      <section aria-labelledby="experience" className="mt-28">
+        <SectionHeading
+          id="experience"
+          title="Experience"
+          link={{ href: "/about", label: "Full experience" }}
+        />
+        <ExperienceList limit={6} />
+      </section>
+
+      <section aria-labelledby="github" className="mt-28">
+        <SectionHeading
+          id="github"
+          title="GitHub activity"
+          intro="This is pulled from my public GitHub profile. Pick a year or move through the days with the arrow keys."
+        />
+        <GitHubActivity />
+      </section>
+
+      <div className="mt-28 grid gap-16 sm:grid-cols-2 sm:gap-10">
+        <section aria-labelledby="writing">
+          <SectionHeading id="writing" title="Writing" link={{ href: "/writing", label: "All posts" }} />
+          <ul className="-mt-2 divide-y divide-border">
+            {writingPosts.slice(0, 4).map((post) => (
+              <li key={post.title}>
+                <a href={post.href} className="group block py-3">
+                  <span className="font-medium leading-snug group-hover:text-brand">
+                    {post.title}
+                  </span>
+                  <span className="mt-1 block font-mono text-xs text-fg-muted">
+                    {post.source}
+                    {post.date ? ` · ${post.date}` : ""}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section aria-labelledby="community">
+          <SectionHeading
+            id="community"
+            title="Community"
+            link={{ href: "/volunteer", label: "Volunteer work" }}
+          />
+          <ul className="-mt-2 divide-y divide-border">
+            {volunteerOrgs.map((v) => (
+              <li key={v.org} className="py-3">
+                <p className="font-medium">
+                  {v.org} <span className="font-normal text-fg-muted">· {v.role}</span>
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-fg-muted">{v.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
+
+      <section
+        aria-labelledby="oreo"
+        className="mt-28 grid items-center gap-8 rounded-2xl bg-bg-elevated p-5 sm:grid-cols-[13rem_1fr] sm:gap-10 sm:p-8"
+      >
+        <figure>
+          <Image
+            src="/oreo/oreo-photo.jpg"
+            alt="Oreo, a white cat with brown tabby patches and a blue collar, looking up at the camera"
+            width={675}
+            height={900}
+            sizes="(min-width: 640px) 208px, 100vw"
+            className="aspect-[4/5] w-full rounded-xl object-cover sm:aspect-[3/4]"
+          />
+          <figcaption className="mt-2 font-mono text-xs text-fg-muted">Oreo · usually nearby</figcaption>
+        </figure>
+        <div>
+          <h2 id="oreo" className="font-display text-2xl font-bold tracking-tight">
+            Off the clock
           </h2>
-          <p className="mt-2 max-w-md text-fg-muted">
-            Hiring, collaborating, or curious about Solid / open data — reach
-            out.
+          <p className="mt-3 max-w-[50ch] leading-relaxed text-fg-muted">
+            This is Oreo. The pixel cat chasing your cursor is based on the real one.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <p className="mt-3 max-w-[50ch] leading-relaxed text-fg-muted">
+            Away from work, I mentor frontend developers with WeTech and She Code Africa. I also
+            write occasionally when I have something useful to share.
+          </p>
+          {site.spotifyUrl && (
             <a
-              href={`mailto:${site.email}`}
-              className="inline-flex rounded-lg bg-cta-bg px-5 py-3 text-sm font-medium text-cta-fg transition-opacity hover:opacity-90"
+              href={site.spotifyUrl}
+              className="mt-5 inline-flex rounded-full border border-fg/25 px-4 py-2 text-sm font-medium hover:border-fg"
             >
-              Email me
+              What I&apos;m listening to ↗
             </a>
-            <a
-              href={site.calendarUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex rounded-lg border border-border px-5 py-3 text-sm font-medium text-fg transition-colors hover:border-brand hover:text-brand"
-            >
-              Book a call
-            </a>
-          </div>
-        </Reveal>
+          )}
+          <p className="mt-5 text-sm">
+            <Link href="/about" className="font-medium text-brand hover:underline hover:underline-offset-4">
+              More about me →
+            </Link>
+          </p>
+        </div>
       </section>
     </main>
   );

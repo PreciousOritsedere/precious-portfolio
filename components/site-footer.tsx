@@ -1,60 +1,57 @@
 import Link from "next/link";
-import { site } from "@/lib/site";
+import { site, socialLinks } from "@/lib/site";
 
 export function SiteFooter() {
-  const links = [
-    { href: `mailto:${site.email}`, label: "Email" },
-    { href: site.calendarUrl, label: "Book a call", external: true },
-    { href: site.githubUrl, label: "GitHub", external: true },
-    { href: site.linkedinUrl, label: "LinkedIn", external: true },
-    { href: site.mediumUrl, label: "Medium", external: true },
-    { href: site.hashnodeUrl, label: "Hashnode", external: true },
-    ...(site.spotifyUrl
-      ? [{ href: site.spotifyUrl, label: "Spotify", external: true }]
-      : []),
-  ];
-
   return (
-    <footer className="border-t border-border bg-bg-elevated">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:px-8 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p className="font-display text-lg font-bold text-fg">{site.name}</p>
-          <p className="mt-1 max-w-sm text-sm text-fg-muted">
-            Software engineer shipping product systems, Solid/open data, and
-            platforms. Oreo follows you around.
-          </p>
+    <footer className="mx-auto w-full max-w-[64rem] px-5 pb-10 pt-28 sm:px-8">
+      <div className="border-t border-border pt-14">
+        <p className="max-w-[22ch] font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          Thanks for stopping by.
+        </p>
+        <p className="mt-4 max-w-[54ch] leading-relaxed text-fg-muted">
+          Have a project in mind, or want to ask about something here? Send me an email or book a
+          call.
+        </p>
+        <div className="mt-7 flex flex-wrap gap-3">
+          <a
+            href={`mailto:${site.email}`}
+            className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
+          >
+            {site.email}
+          </a>
+          <a
+            href={site.calendarUrl}
+            className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+          >
+            Book a call
+          </a>
         </div>
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm">
-          {links.map((link) => (
-            <li key={link.label}>
-              {link.external ? (
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-fg-muted transition-colors hover:text-brand"
-                >
-                  {link.label}
+        <p className="mt-12 font-display text-xl font-bold">
+          — Precious{" "}
+          <span className="font-sans text-base font-normal text-fg-muted">
+            &amp; Oreo, still chasing your cursor
+          </span>
+        </p>
+
+        <div className="mt-14 flex flex-col gap-4 font-mono text-xs text-fg-muted sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            © {new Date().getFullYear()} {site.name} · {site.location}
+          </span>
+          <ul className="flex flex-wrap gap-x-4 gap-y-2">
+            {socialLinks.map((s) => (
+              <li key={s.label}>
+                <a href={s.href} className="hover:text-fg">
+                  {s.label}
                 </a>
-              ) : (
-                <a
-                  href={link.href}
-                  className="text-fg-muted transition-colors hover:text-brand"
-                >
-                  {link.label}
-                </a>
-              )}
+              </li>
+            ))}
+            <li>
+              <Link href="/contact" className="hover:text-fg">
+                Contact
+              </Link>
             </li>
-          ))}
-          <li>
-            <Link
-              href="/contact"
-              className="text-fg-muted transition-colors hover:text-brand"
-            >
-              Contact
-            </Link>
-          </li>
-        </ul>
+          </ul>
+        </div>
       </div>
     </footer>
   );

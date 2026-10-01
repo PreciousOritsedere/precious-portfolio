@@ -1,5 +1,7 @@
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
 @import "tailwindcss";
+
+/* Hallmark · macrostructure: dossier single column (64rem) · nav N5 floating pill · footer Ft6 letter close
+   genre: personal engineer site · palette: burgundy/paper (DESIGN.md) · motion: hero entry only */
 
 :root {
   --brand: #8c1c13;
@@ -15,14 +17,22 @@
   --border: color-mix(in srgb, var(--stone) 55%, transparent);
   --focus: var(--brand);
 
-  --hero-from: #8c1c13;
-  --hero-via: #6e1610;
-  --hero-to: #3d0c09;
+  --code-fg: #f3ebe0;
+  --code-muted: #a78a7f;
+  --code-key: #f0c987;
+  --code-fn: #ff9b8a;
+  --code-str: #b5d99c;
 
   --cta-bg: #8c1c13;
   --cta-fg: #f3ebe0;
   --cta-secondary-fg: #f3ebe0;
   --cta-secondary-border: color-mix(in srgb, #f3ebe0 40%, transparent);
+
+  --heat-0: color-mix(in srgb, var(--stone) 22%, transparent);
+  --heat-1: color-mix(in srgb, var(--brand-soft) 38%, var(--bg));
+  --heat-2: var(--brand-soft);
+  --heat-3: var(--brand);
+  --heat-4: #4f0f0a;
 
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -40,8 +50,13 @@
   --color-border: var(--border);
   --color-cta-bg: var(--cta-bg);
   --color-cta-fg: var(--cta-fg);
+  --color-code-fg: var(--code-fg);
+  --color-code-muted: var(--code-muted);
+  --color-code-key: var(--code-key);
+  --color-code-fn: var(--code-fn);
+  --color-code-str: var(--code-str);
   --font-display: var(--font-syne), "Segoe UI", sans-serif;
-  --font-sans: "Satoshi", var(--font-syne), "Segoe UI", sans-serif;
+  --font-sans: var(--font-satoshi), "Segoe UI", system-ui, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
 }
 
@@ -72,31 +87,35 @@ body {
   font-style: normal;
 }
 
-.hero-atmosphere {
-  color: var(--cta-fg);
-  background:
-    radial-gradient(
-      ellipse 80% 60% at 70% 20%,
-      color-mix(in srgb, var(--brand-soft) 35%, transparent),
-      transparent 55%
-    ),
-    linear-gradient(165deg, var(--hero-from) 0%, var(--hero-via) 48%, var(--hero-to) 100%);
+.code-banner {
+  background: linear-gradient(180deg, #2f2624 0%, #251d1b 100%);
+  box-shadow: 0 24px 50px -28px rgb(42 31 28 / 0.6);
 }
 
-.hero-grain::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.14;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+.code-caret {
+  animation: caret 1.1s steps(1) infinite;
 }
 
-.hero-atmosphere > * {
-  position: relative;
-  z-index: 1;
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+html {
+  interpolate-size: allow-keywords;
+}
+
+details::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 280ms var(--ease-out-expo),
+    content-visibility 280ms allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {

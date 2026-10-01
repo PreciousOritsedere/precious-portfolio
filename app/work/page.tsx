@@ -1,39 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { featuredProjects } from "@/lib/site";
+import { WorkBrowser } from "@/components/work-browser";
 
 export const metadata: Metadata = {
   title: "Work",
+  description: "A selection of work by Precious O Oritsedere.",
 };
 
 export default function WorkPage() {
   return (
-    <main id="main" className="mx-auto max-w-6xl flex-1 px-5 py-16 sm:px-8">
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-        Work
-      </h1>
-      <p className="mt-3 max-w-xl text-fg-muted">
-        Featured systems first. Full filters and supporting projects land in
-        Phase 2.
+    <main id="main" className="mx-auto w-full max-w-[64rem] flex-1 px-5 pt-16 sm:px-8">
+      <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">Work</h1>
+      <p className="mt-3 max-w-[58ch] text-lg leading-relaxed text-fg-muted">
+        A mix of open-source work and products I&apos;ve worked on for clients and employers. The
+        public repositories are linked where I can share them.
       </p>
-      <ul className="mt-12 divide-y divide-border">
-        {featuredProjects.map((project) => (
-          <li key={project.slug} className="py-6">
-            <Link
-              href={`/work/${project.slug}`}
-              className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between"
-            >
-              <div>
-                <p className="font-display text-xl font-bold group-hover:text-brand">
-                  {project.title}
-                </p>
-                <p className="mt-1 text-sm text-fg-muted">{project.line}</p>
-              </div>
-              <span className="font-mono text-xs text-stone">{project.year}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="mt-10">
+        <WorkBrowser />
+      </div>
     </main>
   );
 }
