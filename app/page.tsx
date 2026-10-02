@@ -7,6 +7,7 @@ import { GitHubActivity } from "@/components/github-activity";
 import { FadeUp, HeroMotion } from "@/components/motion";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
+import { SplitReveal } from "@/components/split-reveal";
 import { SpotifySection } from "@/components/spotify-section";
 import { StackGroups } from "@/components/stack-groups";
 import { TechChip } from "@/components/tech-chip";
@@ -29,7 +30,7 @@ export default function HomePage() {
                 height={192}
                 priority
                 sizes="96px"
-                className="size-20 rounded-full object-cover object-[50%_18%] ring-[5px] ring-bg sm:size-24"
+                className="size-20 rounded-full object-cover object-[50%_18%] ring-[5px] ring-bg transition-[scale,box-shadow] duration-500 ease-(--ease-out-expo) hover:scale-105 hover:shadow-[0_0_0_7px_var(--brand-soft)] sm:size-24"
               />
             </FadeUp>
             <FadeUp className="hidden sm:block">
@@ -48,9 +49,10 @@ export default function HomePage() {
           <FadeUp>
             <h1
               id="intro"
+              aria-label={site.name}
               className="mt-6 font-display text-[clamp(2.25rem,6vw,3.5rem)] font-extrabold leading-[1.02] tracking-[-0.03em]"
             >
-              {site.name}
+              <SplitReveal text={site.name} />
             </h1>
             <p className="mt-2 text-lg text-fg-muted">
               {site.role} · JavaScript, TypeScript, React, Python, Node.js · {site.location.split(",")[0]}
@@ -97,20 +99,20 @@ export default function HomePage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={`mailto:${site.email}`}
-                className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
+                className="btn btn-primary"
               >
                 Email me
               </a>
               <ExternalLink
                 href={site.calendarUrl}
-                className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+                className="btn btn-ghost"
               >
                 Book a call
               </ExternalLink>
               <a
                 href={site.cvUrl}
                 download={site.cvFilename}
-                className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+                className="btn btn-ghost"
               >
                 Download CV
               </a>
@@ -126,7 +128,7 @@ export default function HomePage() {
           intro="The public repositories are linked. Client code stays private."
           link={{ href: "/work", label: "All work" }}
         />
-        <div className="grid gap-x-6 gap-y-14 sm:grid-cols-2">
+        <div data-reveal-stagger="up" className="grid gap-x-6 gap-y-14 sm:grid-cols-2">
           {featuredProjects.map((project, i) => (
             <div key={project.slug} className={i === 0 ? "sm:col-span-2" : undefined}>
               <ProjectCard project={project} large={i === 0} priority={i === 0} />
@@ -141,7 +143,9 @@ export default function HomePage() {
           title="Tools I use"
           intro="The languages, frameworks and services that show up most often in my work."
         />
-        <StackGroups />
+        <div data-reveal="up">
+          <StackGroups />
+        </div>
       </section>
 
       <section aria-labelledby="experience" className="mt-28">
@@ -150,7 +154,9 @@ export default function HomePage() {
           title="Experience"
           link={{ href: "/about", label: "Full experience" }}
         />
-        <ExperienceList limit={6} />
+        <div data-reveal="up">
+          <ExperienceList limit={6} />
+        </div>
       </section>
 
       <section aria-labelledby="github" className="mt-28">
@@ -159,17 +165,19 @@ export default function HomePage() {
           title="GitHub activity"
           intro="This is pulled from my public GitHub profile. Pick a year or move through the days with the arrow keys."
         />
-        <GitHubActivity />
+        <div data-reveal="up">
+          <GitHubActivity />
+        </div>
       </section>
 
       <div className="mt-28 grid gap-16 sm:grid-cols-2 sm:gap-10">
         <section aria-labelledby="writing">
           <SectionHeading id="writing" title="Writing" link={{ href: "/writing", label: "All posts" }} />
-          <ul className="-mt-2 divide-y divide-border">
+          <ul data-reveal-stagger="up" className="-mt-2 divide-y divide-border">
             {writingPosts.slice(0, 4).map((post) => (
               <li key={post.title}>
-                <ExternalLink href={post.href} className="group block py-3">
-                  <span className="font-medium leading-snug group-hover:text-brand">
+                <ExternalLink href={post.href} className="group block py-3 transition-transform duration-300 ease-(--ease-out-expo) hover:translate-x-1">
+                  <span className="link-grow font-medium leading-snug transition-colors group-hover:text-brand">
                     {post.title}
                   </span>
                   <span className="mt-1 block font-mono text-xs text-fg-muted">
@@ -188,7 +196,7 @@ export default function HomePage() {
             title="Community"
             link={{ href: "/volunteer", label: "Volunteer work" }}
           />
-          <ul className="-mt-2 divide-y divide-border">
+          <ul data-reveal-stagger="up" className="-mt-2 divide-y divide-border">
             {volunteerOrgs.map((v) => (
               <li key={v.org} className="py-3">
                 <p className="font-medium">
@@ -205,6 +213,7 @@ export default function HomePage() {
 
       <section
         aria-labelledby="oreo"
+        data-reveal="up"
         className="mt-28 grid items-center gap-8 rounded-2xl bg-bg-elevated p-5 sm:grid-cols-[13rem_1fr] sm:gap-10 sm:p-8"
       >
         <figure>
@@ -230,8 +239,11 @@ export default function HomePage() {
             write occasionally when I have something useful to share.
           </p>
           <p className="mt-5 text-sm">
-            <Link href="/about" className="font-medium text-brand hover:underline hover:underline-offset-4">
-              More about me →
+            <Link href="/about" className="group font-medium text-brand">
+              <span className="link-grow">More about me</span>{" "}
+              <span aria-hidden className="inline-block transition-transform duration-300 ease-(--ease-out-expo) group-hover:translate-x-1">
+                →
+              </span>
             </Link>
           </p>
         </div>

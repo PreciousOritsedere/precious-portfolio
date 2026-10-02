@@ -162,13 +162,15 @@ export function SpotifyDeck({
                         {track.artists}
                       </span>
                     </span>
-                    <span
+                    <time
+                      dateTime={track.playedAt}
+                      suppressHydrationWarning
                       className={`shrink-0 font-mono text-[10px] ${
                         selected ? "text-cta-fg/65" : "text-fg-muted"
                       }`}
                     >
                       {relativePlayed(track.playedAt)}
-                    </span>
+                    </time>
                   </button>
                 </li>
               );

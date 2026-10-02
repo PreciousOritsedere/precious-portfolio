@@ -6,7 +6,7 @@ export function TechChip({ name, inline = false }: { name: string; inline?: bool
 
   return (
     <span
-      className={`group/chip inline-flex items-center gap-1.5 rounded-md border border-border bg-bg font-mono text-fg ${
+      className={`group/chip inline-flex items-center gap-1.5 rounded-md border border-border bg-bg font-mono text-fg transition-[translate,border-color,box-shadow] duration-300 ease-(--ease-out-expo) hover:-translate-y-0.5 hover:border-brand-soft/50 hover:shadow-[0_6px_14px_-8px_rgb(42_31_28/0.35)] ${
         inline ? "mx-0.5 px-1.5 py-px align-[0.1em] text-[0.8em]" : "px-2 py-1 text-xs"
       }`}
     >

@@ -17,7 +17,7 @@ export function ProjectCard({
   const rest = project.stack.length - shown.length;
 
   return (
-    <article className="group relative">
+    <article data-tilt className="group relative">
       <ProjectPreview
         project={project}
         priority={priority}
@@ -51,8 +51,11 @@ export function ProjectCard({
         </ul>
       )}
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-        <span className="font-medium text-brand group-hover:underline group-hover:underline-offset-4">
-          Case study →
+        <span className="font-medium text-brand">
+          <span className="link-grow">Case study</span>{" "}
+          <span aria-hidden className="inline-block transition-transform duration-300 ease-(--ease-out-expo) group-hover:translate-x-1">
+            →
+          </span>
         </span>
         {project.repo ? (
           <ExternalLink href={project.repo.href} className="relative z-10 text-fg-muted hover:text-fg">

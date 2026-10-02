@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ViewTransition } from "react";
 import type { Project } from "@/lib/content";
 
 const podTree = [
@@ -37,20 +38,26 @@ export function ProjectPreview({
   sizes?: string;
 }) {
   return (
-    <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-bg-elevated">
-      {project.image ? (
-        <Image
-          src={project.image}
-          alt={`${project.title}, live site`}
-          width={1440}
-          height={900}
-          sizes={sizes}
-          priority={priority}
-          className="size-full object-cover object-top transition-transform duration-700 ease-(--ease-out-expo) group-hover:scale-[1.025]"
-        />
-      ) : (
-        <PodTree />
-      )}
-    </div>
+    <ViewTransition name={`project-${project.slug}`} share="morph" default="none">
+      <div
+        data-reveal="image"
+        data-tilt-target
+        className="relative aspect-[16/10] overflow-hidden rounded-xl border border-border bg-bg-elevated"
+      >
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={`${project.title}, live site`}
+            width={1440}
+            height={900}
+            sizes={sizes}
+            priority={priority}
+            className="size-full object-cover object-top transition-transform duration-700 ease-(--ease-out-expo) group-hover:scale-[1.025]"
+          />
+        ) : (
+          <PodTree />
+        )}
+      </div>
+    </ViewTransition>
   );
 }

@@ -28,15 +28,17 @@ export function CodeBanner() {
             Currently a {site.now.title} @ {site.now.org}
           </p>
           <p>
-            <span className="text-code-key">console</span>.
-            <span className="text-code-fn">log</span>{"("}
-            <ExternalLink
-              href={site.githubUrl}
-              className="text-code-str underline-offset-4 hover:underline"
-            >
-              &quot;Since you&apos;re here, you might as well hire me. 😊&quot;
-            </ExternalLink>
-            {");"}
+            <span className="code-type">
+              <span className="text-code-key">console</span>.
+              <span className="text-code-fn">log</span>{"("}
+              <ExternalLink
+                href={site.githubUrl}
+                className="text-code-str underline-offset-4 hover:underline"
+              >
+                &quot;Since you&apos;re here, you might as well hire me. 😊&quot;
+              </ExternalLink>
+              {");"}
+            </span>
             <span aria-hidden className="code-caret ml-0.5 inline-block h-[1.1em] w-[0.55ch] translate-y-[0.2em] bg-code-fg/80" />
           </p>
         </div>

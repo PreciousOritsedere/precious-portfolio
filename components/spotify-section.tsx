@@ -62,7 +62,7 @@ export async function SpotifySection() {
   }
 
   return (
-    <section aria-labelledby="listening" className="mt-28">
+    <section aria-labelledby="listening" data-reveal="up" className="mt-28">
       <SpotifyDeck tracks={tracks} profileUrl={site.spotifyUrl} />
     </section>
   );

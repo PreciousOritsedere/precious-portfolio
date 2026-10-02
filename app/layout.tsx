@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, Syne } from "next/font/google";
 import localFont from "next/font/local";
+import { AutumnLeaves } from "@/components/autumn-leaves";
+import { MotionEffects } from "@/components/motion-effects";
 import { OreoCompanion } from "@/components/oreo-companion";
+import { PageTransition } from "@/components/page-transition";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
@@ -41,10 +44,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${syne.variable} ${satoshi.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-bg text-fg">
+        <AutumnLeaves />
         <SiteHeader />
-        <div className="flex flex-1 flex-col">{children}</div>
+        <PageTransition>{children}</PageTransition>
         <SiteFooter />
         <OreoCompanion />
+        <MotionEffects />
       </body>
     </html>
   );

@@ -19,20 +19,20 @@ export default function ContactPage() {
       <div className="mt-8 flex flex-wrap gap-3">
         <a
           href={`mailto:${site.email}`}
-          className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
+          className="btn btn-primary"
         >
           {site.email}
         </a>
         <ExternalLink
           href={site.calendarUrl}
-          className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+          className="btn btn-ghost"
         >
           Book a call
         </ExternalLink>
         <a
           href={site.cvUrl}
           download={site.cvFilename}
-          className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+          className="btn btn-ghost"
         >
           Download CV
         </a>

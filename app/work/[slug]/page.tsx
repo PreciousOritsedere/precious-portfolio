@@ -51,7 +51,7 @@ export default async function CaseStudyPage({ params }: Props) {
         {project.live && (
           <ExternalLink
             href={project.live.href}
-            className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
+            className="btn btn-primary"
           >
             Visit live site ↗
           </ExternalLink>
@@ -59,7 +59,7 @@ export default async function CaseStudyPage({ params }: Props) {
         {project.repo && (
           <ExternalLink
             href={project.repo.href}
-            className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+            className="btn btn-ghost"
           >
             View code on GitHub ↗
           </ExternalLink>

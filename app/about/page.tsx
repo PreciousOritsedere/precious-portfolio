@@ -59,13 +59,13 @@ export default function AboutPage() {
             <a
               href={site.cvUrl}
               download={site.cvFilename}
-              className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
+              className="btn btn-primary"
             >
               Download CV
             </a>
             <a
               href={`mailto:${site.email}`}
-              className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+              className="btn btn-ghost"
             >
               Email me
             </a>
