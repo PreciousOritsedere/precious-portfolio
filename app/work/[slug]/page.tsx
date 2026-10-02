@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { ExternalLink } from "@/components/external-link";
 import { ProjectPreview } from "@/components/project-preview";
 import { TechChip } from "@/components/tech-chip";
 import { featuredProjects } from "@/lib/content";
@@ -48,20 +49,20 @@ export default async function CaseStudyPage({ params }: Props) {
       <p className="mt-3 max-w-[58ch] text-lg leading-relaxed text-fg-muted">{project.line}</p>
       <div className="mt-6 flex flex-wrap gap-3">
         {project.live && (
-          <a
+          <ExternalLink
             href={project.live.href}
             className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-cta-fg transition-colors duration-150 hover:bg-brand-soft"
           >
             Visit live site ↗
-          </a>
+          </ExternalLink>
         )}
         {project.repo && (
-          <a
+          <ExternalLink
             href={project.repo.href}
             className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
           >
             View code on GitHub ↗
-          </a>
+          </ExternalLink>
         )}
       </div>
 
@@ -113,9 +114,12 @@ export default async function CaseStudyPage({ params }: Props) {
               <dt className="text-fg-muted">Code</dt>
               <dd className="mt-0.5">
                 {project.repo ? (
-                  <a href={project.repo.href} className="break-all font-mono text-xs hover:text-brand">
+                  <ExternalLink
+                    href={project.repo.href}
+                    className="break-all font-mono text-xs hover:text-brand"
+                  >
                     {project.repo.label} ↗
-                  </a>
+                  </ExternalLink>
                 ) : (
                   <span className="text-fg-muted">Private client repository</span>
                 )}

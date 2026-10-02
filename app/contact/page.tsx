@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ExternalLink } from "@/components/external-link";
 import { site, socialLinks } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function ContactPage() {
       </h1>
       <p className="mt-3 max-w-[50ch] text-lg leading-relaxed text-fg-muted">
         Email is the easiest way to reach me. If it would be simpler to talk, you can book a call.
+        You can also download my CV.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
         <a
@@ -21,19 +23,26 @@ export default function ContactPage() {
         >
           {site.email}
         </a>
-        <a
+        <ExternalLink
           href={site.calendarUrl}
           className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
         >
           Book a call
+        </ExternalLink>
+        <a
+          href={site.cvUrl}
+          download={site.cvFilename}
+          className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+        >
+          Download CV
         </a>
       </div>
       <ul className="mt-10 flex flex-wrap gap-x-5 gap-y-2 font-mono text-sm text-fg-muted">
         {socialLinks.map((s) => (
           <li key={s.label}>
-            <a href={s.href} className="hover:text-fg">
+            <ExternalLink href={s.href} className="hover:text-fg">
               {s.label} ↗
-            </a>
+            </ExternalLink>
           </li>
         ))}
       </ul>

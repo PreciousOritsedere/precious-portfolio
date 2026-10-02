@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CodeBanner } from "@/components/code-banner";
 import { ExperienceList } from "@/components/experience-list";
+import { ExternalLink } from "@/components/external-link";
 import { GitHubActivity } from "@/components/github-activity";
 import { FadeUp, HeroMotion } from "@/components/motion";
 import { ProjectCard } from "@/components/project-card";
@@ -35,9 +36,9 @@ export default function HomePage() {
               <ul className="flex flex-wrap justify-end gap-x-4 gap-y-1 pb-1 font-mono text-xs text-fg-muted">
                 {socialLinks.map((s) => (
                   <li key={s.label}>
-                    <a href={s.href} className="hover:text-brand">
+                    <ExternalLink href={s.href} className="hover:text-brand">
                       {s.label} ↗
-                    </a>
+                    </ExternalLink>
                   </li>
                 ))}
               </ul>
@@ -57,9 +58,9 @@ export default function HomePage() {
             <ul className="mt-4 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-fg-muted sm:hidden">
               {socialLinks.map((s) => (
                 <li key={s.label}>
-                  <a href={s.href} className="hover:text-brand">
+                  <ExternalLink href={s.href} className="hover:text-brand">
                     {s.label} ↗
-                  </a>
+                  </ExternalLink>
                 </li>
               ))}
             </ul>
@@ -100,11 +101,18 @@ export default function HomePage() {
               >
                 Email me
               </a>
-              <a
+              <ExternalLink
                 href={site.calendarUrl}
                 className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
               >
                 Book a call
+              </ExternalLink>
+              <a
+                href={site.cvUrl}
+                download={site.cvFilename}
+                className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+              >
+                Download CV
               </a>
             </div>
           </FadeUp>
@@ -160,7 +168,7 @@ export default function HomePage() {
           <ul className="-mt-2 divide-y divide-border">
             {writingPosts.slice(0, 4).map((post) => (
               <li key={post.title}>
-                <a href={post.href} className="group block py-3">
+                <ExternalLink href={post.href} className="group block py-3">
                   <span className="font-medium leading-snug group-hover:text-brand">
                     {post.title}
                   </span>
@@ -168,7 +176,7 @@ export default function HomePage() {
                     {post.source}
                     {post.date ? ` · ${post.date}` : ""}
                   </span>
-                </a>
+                </ExternalLink>
               </li>
             ))}
           </ul>

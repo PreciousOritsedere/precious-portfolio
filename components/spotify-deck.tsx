@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useId, useState } from "react";
+import { ExternalLink } from "@/components/external-link";
 import type { SpotifyTrack } from "@/lib/spotify";
 
 function relativePlayed(iso: string) {
@@ -175,12 +176,12 @@ export function SpotifyDeck({
           </ul>
 
           {profileUrl && (
-            <a
+            <ExternalLink
               href={profileUrl}
               className="mt-4 inline-flex px-1 text-sm font-medium text-brand hover:underline hover:underline-offset-4"
             >
               Open on Spotify ↗
-            </a>
+            </ExternalLink>
           )}
         </div>
       </div>

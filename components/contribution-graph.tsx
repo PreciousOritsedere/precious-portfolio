@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, type KeyboardEvent } from "react";
+import { ExternalLink } from "@/components/external-link";
 import type { ContributionYear } from "@/lib/github";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -203,9 +204,9 @@ export function ContributionGraph({
             ))}
             More
           </span>
-          <a href={profileUrl} className="text-brand underline-offset-4 hover:underline">
+          <ExternalLink href={profileUrl} className="text-brand underline-offset-4 hover:underline">
             GitHub ↗
-          </a>
+          </ExternalLink>
         </div>
       </div>
     </div>

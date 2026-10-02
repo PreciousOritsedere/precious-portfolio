@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ExternalLink } from "@/components/external-link";
 import { volunteerOrgs } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -22,9 +23,12 @@ export default function VolunteerPage() {
             <p className="mt-1 text-sm font-medium text-brand">{entry.role}</p>
             <p className="mt-2 max-w-[60ch] leading-relaxed text-fg-muted">{entry.summary}</p>
             {entry.href && (
-              <a href={entry.href} className="mt-3 inline-block text-sm text-fg-muted hover:text-fg">
+              <ExternalLink
+                href={entry.href}
+                className="mt-3 inline-block text-sm text-fg-muted hover:text-fg"
+              >
                 {new URL(entry.href).hostname.replace("www.", "")} ↗
-              </a>
+              </ExternalLink>
             )}
           </li>
         ))}

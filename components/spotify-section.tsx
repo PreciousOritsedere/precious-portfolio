@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/components/external-link";
 import { SpotifyDeck } from "@/components/spotify-deck";
 import { getRecentlyPlayed, spotifyConfigured } from "@/lib/spotify";
 import { site } from "@/lib/site";
@@ -22,12 +23,12 @@ export async function SpotifySection() {
                 I enjoy music a lot. There&apos;s usually something playing during work, after work
                 and most of the time in between.
               </p>
-              <a
+              <ExternalLink
                 href={site.spotifyUrl}
                 className="mt-6 inline-flex rounded-full border border-[#f3ebe0]/30 px-4 py-2 text-sm font-medium text-[#f3ebe0] hover:border-[#f3ebe0]"
               >
                 What I&apos;m listening to ↗
-              </a>
+              </ExternalLink>
             </div>
           </div>
         </div>
@@ -49,12 +50,12 @@ export async function SpotifySection() {
             I enjoy music a lot. Spotify&apos;s recent tracks aren&apos;t loading right now, but you
             can still open what I&apos;ve been into.
           </p>
-          <a
+          <ExternalLink
             href={site.spotifyUrl}
             className="mt-5 inline-flex text-sm font-medium text-brand hover:underline hover:underline-offset-4"
           >
             Open Spotify ↗
-          </a>
+          </ExternalLink>
         </div>
       </section>
     );

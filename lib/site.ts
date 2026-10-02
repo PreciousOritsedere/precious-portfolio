@@ -20,6 +20,8 @@ export const site = {
   hashnodeUrl:
     process.env.NEXT_PUBLIC_HASHNODE_URL ?? "https://hashnode.com/@PreciousBlogs",
   spotifyUrl: process.env.NEXT_PUBLIC_SPOTIFY_URL || null,
+  cvUrl: "/Precious-Oritsedere-CV.pdf",
+  cvFilename: "Precious-Oritsedere-CV.pdf",
 } as const;
 
 export const navLinks = [

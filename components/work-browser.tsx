@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { ExternalLink } from "@/components/external-link";
 import { ProjectCard } from "@/components/project-card";
 import { projects, projectTags, type ProjectTag } from "@/lib/content";
 
@@ -70,14 +71,20 @@ export function WorkBrowser() {
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-xs sm:flex-col sm:items-end sm:gap-1">
                   <span className="text-fg-muted">{p.year}</span>
                   {p.repo && (
-                    <a href={p.repo.href} className="text-brand hover:underline hover:underline-offset-4">
+                    <ExternalLink
+                      href={p.repo.href}
+                      className="text-brand hover:underline hover:underline-offset-4"
+                    >
                       GitHub ↗
-                    </a>
+                    </ExternalLink>
                   )}
                   {p.live && (
-                    <a href={p.live.href} className="text-brand hover:underline hover:underline-offset-4">
+                    <ExternalLink
+                      href={p.live.href}
+                      className="text-brand hover:underline hover:underline-offset-4"
+                    >
                       Live ↗
-                    </a>
+                    </ExternalLink>
                   )}
                 </div>
               </li>

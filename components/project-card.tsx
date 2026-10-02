@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "@/components/external-link";
 import { ProjectPreview } from "@/components/project-preview";
 import { TechChip } from "@/components/tech-chip";
 import type { Project } from "@/lib/content";
@@ -54,16 +55,16 @@ export function ProjectCard({
           Case study →
         </span>
         {project.repo ? (
-          <a href={project.repo.href} className="relative z-10 text-fg-muted hover:text-fg">
+          <ExternalLink href={project.repo.href} className="relative z-10 text-fg-muted hover:text-fg">
             GitHub ↗
-          </a>
+          </ExternalLink>
         ) : (
           <span className="text-fg-muted/80">Code is private</span>
         )}
         {project.live && (
-          <a href={project.live.href} className="relative z-10 text-fg-muted hover:text-fg">
+          <ExternalLink href={project.live.href} className="relative z-10 text-fg-muted hover:text-fg">
             Live ↗
-          </a>
+          </ExternalLink>
         )}
       </div>
     </article>

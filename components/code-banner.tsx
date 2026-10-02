@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/components/external-link";
 import { LondonTime } from "@/components/london-time";
 import { site } from "@/lib/site";
 
@@ -24,17 +25,17 @@ export function CodeBanner() {
         <div className="min-w-0 text-code-fg">
           <p className="text-code-muted">
             {"// "}
-           Currently a {site.now.title} @ {site.now.org}
+            Currently a {site.now.title} @ {site.now.org}
           </p>
           <p>
             <span className="text-code-key">console</span>.
-            <span className="text-code-fn">log</span>(
-            <a
+            <span className="text-code-fn">log</span>{"("}
+            <ExternalLink
               href={site.githubUrl}
               className="text-code-str underline-offset-4 hover:underline"
             >
               &quot;Since you&apos;re here, you might as well hire me. 😊&quot;
-            </a>
+            </ExternalLink>
             {");"}
             <span aria-hidden className="code-caret ml-0.5 inline-block h-[1.1em] w-[0.55ch] translate-y-[0.2em] bg-code-fg/80" />
           </p>

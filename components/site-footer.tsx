@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExternalLink } from "@/components/external-link";
 import { site, socialLinks } from "@/lib/site";
 
 export function SiteFooter() {
@@ -19,11 +20,18 @@ export function SiteFooter() {
           >
             {site.email}
           </a>
-          <a
+          <ExternalLink
             href={site.calendarUrl}
             className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
           >
             Book a call
+          </ExternalLink>
+          <a
+            href={site.cvUrl}
+            download={site.cvFilename}
+            className="rounded-full border border-fg/25 px-5 py-2.5 text-sm font-medium transition-colors duration-150 hover:border-fg"
+          >
+            Download CV
           </a>
         </div>
         <p className="mt-12 font-display text-xl font-bold">
@@ -40,11 +48,16 @@ export function SiteFooter() {
           <ul className="flex flex-wrap gap-x-4 gap-y-2">
             {socialLinks.map((s) => (
               <li key={s.label}>
-                <a href={s.href} className="hover:text-fg">
+                <ExternalLink href={s.href} className="hover:text-fg">
                   {s.label}
-                </a>
+                </ExternalLink>
               </li>
             ))}
+            <li>
+              <a href={site.cvUrl} download={site.cvFilename} className="hover:text-fg">
+                CV
+              </a>
+            </li>
             <li>
               <Link href="/contact" className="hover:text-fg">
                 Contact
