@@ -6,6 +6,7 @@ import { GitHubActivity } from "@/components/github-activity";
 import { FadeUp, HeroMotion } from "@/components/motion";
 import { ProjectCard } from "@/components/project-card";
 import { SectionHeading } from "@/components/section-heading";
+import { SpotifySection } from "@/components/spotify-section";
 import { StackGroups } from "@/components/stack-groups";
 import { TechChip } from "@/components/tech-chip";
 import { featuredProjects, volunteerOrgs, writingPosts } from "@/lib/content";
@@ -189,6 +190,8 @@ export default function HomePage() {
         </section>
       </div>
 
+      <SpotifySection />
+
       <section
         aria-labelledby="oreo"
         className="mt-28 grid items-center gap-8 rounded-2xl bg-bg-elevated p-5 sm:grid-cols-[13rem_1fr] sm:gap-10 sm:p-8"
@@ -215,14 +218,6 @@ export default function HomePage() {
             Away from work, I mentor frontend developers with WeTech and She Code Africa. I also
             write occasionally when I have something useful to share.
           </p>
-          {site.spotifyUrl && (
-            <a
-              href={site.spotifyUrl}
-              className="mt-5 inline-flex rounded-full border border-fg/25 px-4 py-2 text-sm font-medium hover:border-fg"
-            >
-              What I&apos;m listening to ↗
-            </a>
-          )}
           <p className="mt-5 text-sm">
             <Link href="/about" className="font-medium text-brand hover:underline hover:underline-offset-4">
               More about me →

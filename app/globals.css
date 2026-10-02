@@ -102,6 +102,31 @@ body {
   }
 }
 
+.listening-booth {
+  box-shadow: 0 28px 60px -34px rgb(42 31 28 / 0.55);
+}
+
+.listening-ring {
+  animation: listening-spin 28s linear infinite;
+}
+
+.listening-platter {
+  animation: listening-spin 18s linear infinite;
+}
+
+@keyframes listening-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .listening-ring,
+  .listening-platter {
+    animation: none;
+  }
+}
+
 html {
   interpolate-size: allow-keywords;
 }
