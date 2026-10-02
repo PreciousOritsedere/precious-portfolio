@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ExperienceList } from "@/components/experience-list";
 import { SectionHeading } from "@/components/section-heading";
 import { SpotifySection } from "@/components/spotify-section";
@@ -14,28 +15,47 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main id="main" className="mx-auto w-full max-w-[64rem] flex-1 px-5 pt-16 sm:px-8">
-      <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">About</h1>
-      <div className="mt-6 max-w-[62ch] space-y-4 text-[17px] leading-[1.75]">
-        <p className="text-fg-muted">
-          I&apos;m {site.name}, a software engineer in London. I mostly write JavaScript, TypeScript, and work
-          with React, Next.js, Vue and Node.js. I also use Python for data work and automation.
-          These days, a lot of my work involves Open Source, Solid and open data.
-        </p>
-        <p className="text-fg-muted">
-          I started out in frontend development in 2019 and have built my career across Nigerian,
-          UK and distributed international teams. I&apos;ve worked on products in education,
-          healthcare, fintech and the creator economy, led a small frontend team, contributed to
-          Creative Commons through Outreachy, and now work at the Open Data Institute.
-        </p>
-        <p className="text-fg-muted">
-          I am a top advocate for accessibility. Accessibility is part of the work, not a final pass. I think about semantics, keyboard
-          navigation, focus, contrast and responsive behaviour while I&apos;m building, and I test
-          those details before release.
-        </p>
-        <p className="text-fg-muted">
-          Outside my day job, I mentor frontend developers with WeTech and She Code Africa. Oreo,
-          my cat, is the reason there&apos;s a pixel cat chasing your cursor.
-        </p>
+      <div className="grid items-start gap-10 sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-12 lg:grid-cols-[15rem_minmax(0,1fr)]">
+        <figure className="sm:sticky sm:top-24">
+          <Image
+            src="/about/headshot.jpg"
+            alt={`${site.name}, smiling in a light shirt against a blue background`}
+            width={876}
+            height={1024}
+            priority
+            sizes="(min-width: 640px) 240px, 70vw"
+            className="aspect-[5/6] w-full max-w-[16rem] rounded-2xl object-cover object-[50%_18%] shadow-[0_22px_40px_-28px_rgb(42_31_28/0.55)] sm:max-w-none"
+          />
+          <figcaption className="mt-3 font-mono text-xs text-fg-muted">
+            London · Senior Frontend Developer
+          </figcaption>
+        </figure>
+
+        <div>
+          <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">About</h1>
+          <div className="mt-6 max-w-[62ch] space-y-4 text-[17px] leading-[1.75]">
+            <p className="text-fg-muted">
+              I&apos;m {site.name}, a software engineer in London. I mostly write JavaScript, TypeScript,
+              and work with React, Next.js, Vue and Node.js. I also use Python for data work and
+              automation. These days, a lot of my work involves Open Source, Solid and open data.
+            </p>
+            <p className="text-fg-muted">
+              I started out in frontend development in 2019 and have built my career across Nigerian,
+              UK and distributed international teams. I&apos;ve worked on products in education,
+              healthcare, fintech and the creator economy, led a small frontend team, contributed to
+              Creative Commons through Outreachy, and now work at the Open Data Institute.
+            </p>
+            <p className="text-fg-muted">
+              I am a top advocate for accessibility. Accessibility is part of the work, not a final
+              pass. I think about semantics, keyboard navigation, focus, contrast and responsive
+              behaviour while I&apos;m building, and I test those details before release.
+            </p>
+            <p className="text-fg-muted">
+              Outside my day job, I mentor frontend developers with WeTech and She Code Africa. Oreo,
+              my cat, is the reason there&apos;s a pixel cat chasing your cursor.
+            </p>
+          </div>
+        </div>
       </div>
 
       <SpotifySection />

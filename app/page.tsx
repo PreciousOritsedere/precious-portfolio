@@ -21,12 +21,15 @@ export default function HomePage() {
         <HeroMotion>
           <div className="relative z-10 -mt-10 flex items-end justify-between gap-4 px-1 sm:-mt-12 sm:px-5">
             <FadeUp>
-              <div
-                aria-hidden
-                className="grid size-20 place-items-center rounded-full bg-paper font-display text-2xl font-extrabold tracking-tight text-brand ring-[5px] ring-bg sm:size-24 sm:text-3xl"
-              >
-                PO
-              </div>
+              <Image
+                src="/about/headshot.jpg"
+                alt={site.name}
+                width={192}
+                height={192}
+                priority
+                sizes="96px"
+                className="size-20 rounded-full object-cover object-[50%_18%] ring-[5px] ring-bg sm:size-24"
+              />
             </FadeUp>
             <FadeUp className="hidden sm:block">
               <ul className="flex flex-wrap justify-end gap-x-4 gap-y-1 pb-1 font-mono text-xs text-fg-muted">
