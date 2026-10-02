@@ -307,7 +307,7 @@ export const projects: Project[] = [
     title: "Elite Connect Camp",
     year: "2025",
     context: "Code Funhouse",
-    line: "Residential summer camp — parent and agent registration with Stripe checkout and Sanity CMS.",
+    line: "Residential summer camp with parent and agent registration, Stripe checkout and Sanity CMS.",
     tags: ["Product"],
     stack: ["Next.js", "TypeScript", "Tailwind", "Stripe", "Sanity", "Zod", "Motion"],
     live: { href: "https://elite-camp.vercel.app/", label: "elite-camp.vercel.app" },
@@ -337,7 +337,7 @@ export const projects: Project[] = [
     title: "Architecture portfolio",
     year: "2024",
     context: "Client",
-    line: "Portfolio for architect Izuagbe-Ibrahim Hamid — project gallery and testimonials.",
+    line: "Portfolio for architect Izuagbe-Ibrahim Hamid, with a project gallery and testimonials.",
     tags: ["Product"],
     stack: ["Next.js", "React", "TypeScript"],
     live: {
@@ -350,7 +350,7 @@ export const projects: Project[] = [
     title: "Audiophile",
     year: "2023",
     context: "Personal",
-    line: "Premium audio storefront — catalogue, category pages and cart.",
+    line: "Premium audio storefront with a catalogue, category pages and cart.",
     tags: ["Product"],
     stack: [],
     live: {

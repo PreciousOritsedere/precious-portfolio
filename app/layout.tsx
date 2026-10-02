@@ -28,7 +28,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: `${site.name} — Software Engineer`,
+    default: `${site.name} | Software Engineer`,
     template: `%s · ${site.name}`,
   },
   description: site.tagline,

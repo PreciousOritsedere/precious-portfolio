@@ -16,8 +16,8 @@ export default function AboutPage() {
     <main id="main" className="mx-auto w-full max-w-[64rem] flex-1 px-5 pt-16 sm:px-8">
       <h1 className="font-display text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">About</h1>
       <div className="mt-6 max-w-[62ch] space-y-4 text-[17px] leading-[1.75]">
-        <p>
-          I&apos;m {site.name}, a software engineer in London. I mostly write TypeScript and work
+        <p className="text-fg-muted">
+          I&apos;m {site.name}, a software engineer in London. I mostly write JavaScript, TypeScript, and work
           with React, Next.js, Vue and Node.js. I also use Python for data work and automation.
           These days, a lot of my work involves Open Source, Solid and open data.
         </p>
@@ -28,7 +28,7 @@ export default function AboutPage() {
           Creative Commons through Outreachy, and now work at the Open Data Institute.
         </p>
         <p className="text-fg-muted">
-          Accessibility is part of the work, not a final pass. I think about semantics, keyboard
+          I am a top advocate for accessibility. Accessibility is part of the work, not a final pass. I think about semantics, keyboard
           navigation, focus, contrast and responsive behaviour while I&apos;m building, and I test
           those details before release.
         </p>

@@ -19,8 +19,8 @@ export async function SpotifySection() {
                 Always listening
               </h2>
               <p className="mt-3 text-[15px] leading-relaxed text-[#e7d7c1]/85">
-                I enjoy music a lot. There&apos;s usually something on — during work, after work,
-                and most of the in-between.
+                I enjoy music a lot. There&apos;s usually something playing during work, after work
+                and most of the time in between.
               </p>
               <a
                 href={site.spotifyUrl}

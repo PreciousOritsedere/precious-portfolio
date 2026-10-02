@@ -41,7 +41,7 @@ export function ProjectPreview({
       {project.image ? (
         <Image
           src={project.image}
-          alt={`${project.title} — live site`}
+          alt={`${project.title}, live site`}
           width={1440}
           height={900}
           sizes={sizes}

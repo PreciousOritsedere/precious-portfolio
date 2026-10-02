@@ -21,7 +21,7 @@ export function SiteHeader() {
       >
         <Link
           href="/"
-          aria-label={`${site.name} — home`}
+          aria-label={`${site.name}, home`}
           aria-current={pathname === "/" ? "page" : undefined}
           className="grid size-8 place-items-center rounded-full bg-brand font-display text-[11px] font-extrabold tracking-tight text-cta-fg"
         >

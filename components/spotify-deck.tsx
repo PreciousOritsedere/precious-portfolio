@@ -52,8 +52,8 @@ export function SpotifyDeck({
               Always listening
             </h2>
             <p className="mt-3 max-w-[36ch] text-[15px] leading-relaxed text-[#e7d7c1]/80">
-              I enjoy music a lot. There&apos;s usually something on — during work, after work,
-              and most of the in-between.
+              I enjoy music a lot. There&apos;s usually something playing during work, after work
+              and most of the time in between.
             </p>
           </div>
 
@@ -109,7 +109,7 @@ export function SpotifyDeck({
             <span className="font-mono text-[11px] text-fg-muted">{tracks.length} tracks</span>
           </div>
 
-          <ul className="max-h-[28rem] space-y-1 overflow-y-auto pr-1" aria-labelledby={labelId}>
+          <ul className="listening-scroll max-h-[28rem] space-y-1 overflow-y-auto pr-2" aria-labelledby={labelId}>
             {tracks.map((track, index) => {
               const selected = track.id === active.id;
               return (

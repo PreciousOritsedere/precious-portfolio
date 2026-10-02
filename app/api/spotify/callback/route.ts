@@ -26,7 +26,7 @@ export async function GET(request: Request) {
 
   try {
     const tokens = await exchangeCodeForTokens(code, origin);
-    const refresh = tokens.refresh_token ?? "(no refresh_token returned — revoke app access and try again)";
+    const refresh = tokens.refresh_token ?? "(no refresh_token returned; revoke app access and try again)";
 
     return new NextResponse(
       [

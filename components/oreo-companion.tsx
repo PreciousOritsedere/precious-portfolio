@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * Oreo v0 — oneko-style cursor companion (classic sprite until custom sheet).
+ * Oreo v0: oneko-style cursor companion (classic sprite until custom sheet).
  * Based on https://github.com/adryd325/oneko.js
  */
 export function OreoCompanion() {

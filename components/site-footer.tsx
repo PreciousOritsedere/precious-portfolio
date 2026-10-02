@@ -27,7 +27,7 @@ export function SiteFooter() {
           </a>
         </div>
         <p className="mt-12 font-display text-xl font-bold">
-          — Precious{" "}
+          Precious{" "}
           <span className="font-sans text-base font-normal text-fg-muted">
             &amp; Oreo, still chasing your cursor
           </span>
