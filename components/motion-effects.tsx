@@ -15,7 +15,9 @@ function setupReveals() {
 
   const timers: number[] = [];
   const pending = Array.from(
-    document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-revealed])"),
+    document.querySelectorAll<HTMLElement>(
+      '[data-reveal]:not([data-revealed]), [data-reveal][data-revealed="false"]',
+    ),
   );
 
   // Fully clipped elements never report as intersecting, so clip-path reveals watch their parent.
