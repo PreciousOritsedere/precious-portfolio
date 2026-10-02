@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ExperienceList } from "@/components/experience-list";
 import { SectionHeading } from "@/components/section-heading";
+import { SpotifySection } from "@/components/spotify-section";
 import { StackGroups } from "@/components/stack-groups";
 import { education } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -36,6 +37,8 @@ export default function AboutPage() {
           my cat, is the reason there&apos;s a pixel cat chasing your cursor.
         </p>
       </div>
+
+      <SpotifySection />
 
       <section aria-labelledby="experience" className="mt-24">
         <SectionHeading id="experience" title="Experience" />
